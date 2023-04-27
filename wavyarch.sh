@@ -14,7 +14,9 @@ rline=$(($mline + 1))
 sed -i ''$mline's|#\[multilib\]|\[multilib\]|g' /etc/pacman.conf
 sed -i ''$rline's|#Include = /etc/pacman.d/mirrorlist|Include = /etc/pacman.d/mirrorlist|g' /etc/pacman.conf
 
+pacman -Syu --noconfirm
+
 echo "Installing applications"
-paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal 
+paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal --noconfirm
 
 echo "Done!"
