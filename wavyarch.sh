@@ -1,3 +1,6 @@
+#!/bin/bash
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
 echo "Installing git and base-devel"
 pacman -S --needed git base-devel --noconfirm
 
@@ -21,9 +24,12 @@ echo "Installing applications"
 paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal zsh --noconfirm
 
 echo "Setting up zsh"
-cp .zshrc .zshrc.bkg
+cd SCRIPT_DIR
+cp ~/.zshrc ~/.zshrc.bkg
+cp zshrc ~/.zshrc
 
 chsh -s $(which zsh)
 
-
 echo "Done!"
+echo "Logging out..."
+logout
