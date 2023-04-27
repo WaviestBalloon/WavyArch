@@ -6,6 +6,7 @@ cd ~
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
+cd ~
 
 echo "Allowing and enabling multilib for pacman"
 cp /etc/pacman.conf /etc/pacman.conf.bkg
@@ -17,6 +18,12 @@ sed -i ''$rline's|#Include = /etc/pacman.d/mirrorlist|Include = /etc/pacman.d/mi
 pacman -Syu --noconfirm
 
 echo "Installing applications"
-paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal --noconfirm
+paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal zsh --noconfirm
+
+echo "Setting up zsh"
+cp .zshrc .zshrc.bkg
+
+chsh -s $(which zsh)
+
 
 echo "Done!"
