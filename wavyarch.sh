@@ -1,8 +1,9 @@
 #!/bin/bash
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-echo "Installing git and base-devel"
-sudo pacman -S --needed git base-devel --noconfirm
+echo "Installing git, base-devel and rustup"
+sudo pacman -S --needed git base-devel rustup --noconfirm
+rustup default stable
 
 echo "Installing paru"
 cd ~
