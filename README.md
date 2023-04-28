@@ -1,5 +1,8 @@
-# WavyArch
+# 🌊 WavyArch
 Bash script to setup all my environment and applications after installation.
+
+> **Note**:
+> This script has been configured to work with the `linux-zen` kernel and not the normal Linux kernel! Although you can use it without the Zen kernel, some applications like Virtualbox might not work.
 
 ### Usage
 
@@ -9,5 +12,5 @@ cd WavyArch
 chmod +x ./wavyarch.sh
 ./wavyarch.sh
 ```
-
-> You will always need sudo while running the script!
+> **Warning**: 
+> Do not run this script as `sudo`! It will prompt you when it requires sudo permissions.
