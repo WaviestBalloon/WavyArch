@@ -21,7 +21,7 @@ sed -i ''$rline's|#Include = /etc/pacman.d/mirrorlist|Include = /etc/pacman.d/mi
 pacman -Syu --noconfirm
 
 echo "Installing applications"
-paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal zsh ffmpeg obs-studio --noconfirm
+paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal zsh ffmpeg obs-studio discord --noconfirm
 
 echo "Setting up zsh"
 cp ~/.zshrc ~/.zshrc.bkg
