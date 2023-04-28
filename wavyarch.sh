@@ -22,8 +22,11 @@ sudo sed -i ''$rline's|#Include = /etc/pacman.d/mirrorlist|Include = /etc/pacman
 
 sudo pacman -Syu --noconfirm
 
+echo "Installing deps"
+paru -S virtualbox-host-dkms --no-confirm
+
 echo "Installing applications"
-paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal zsh ffmpeg obs-studio discord --noconfirm
+paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal zsh ffmpeg obs-studio discord virtualbox --noconfirm
 
 echo "Setting up zsh"
 cp ~/.zshrc ~/.zshrc.bkg
