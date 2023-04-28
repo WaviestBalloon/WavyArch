@@ -6,17 +6,18 @@ sudo pacman -S --needed git base-devel --noconfirm
 
 echo "Installing paru"
 cd ~
+rm -rf paru
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
 cd SCRIPT_DIR
 
 echo "Allowing and enabling multilib for pacman"
-cp /etc/pacman.conf /etc/pacman.conf.bkg
+sudo cp /etc/pacman.conf /etc/pacman.conf.bkg
 mline=$(grep -n "\\[multilib\\]" /etc/pacman.conf | cut -d: -f1)
 rline=$(($mline + 1))
-sed -i ''$mline's|#\[multilib\]|\[multilib\]|g' /etc/pacman.conf
-sed -i ''$rline's|#Include = /etc/pacman.d/mirrorlist|Include = /etc/pacman.d/mirrorlist|g' /etc/pacman.conf
+sudo sed -i ''$mline's|#\[multilib\]|\[multilib\]|g' /etc/pacman.conf
+sudo sed -i ''$rline's|#Include = /etc/pacman.d/mirrorlist|Include = /etc/pacman.d/mirrorlist|g' /etc/pacman.conf
 
 sudo pacman -Syu --noconfirm
 
