@@ -1,5 +1,11 @@
 #!/bin/bash
+#https://github.com/WaviestBalloon/WavyArch
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+if [[ $EUID -eq 0 ]]; then
+  echo "This script is restricted to run as a non-root user only. Do not run as root or sudo."
+  exit 1
+fi
 
 echo "Installing git, base-devel, rustup and linux-zen-headers"
 sudo pacman -S --needed git base-devel rustup linux-zen-headers --noconfirm
