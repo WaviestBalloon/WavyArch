@@ -35,6 +35,12 @@ paru -S virtualbox-host-dkms --noconfirm
 echo "Installing applications"
 paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal zsh ffmpeg obs-studio discord virtualbox xorg-xkill --noconfirm
 
+echo "Setting up zsh"
+cp ~/.zshrc ~/.zshrc.bkg
+cp zshrc ~/.zshrc
+
+sudo chsh -s $(which zsh)
+
 echo "Installing Node Version Manager"
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
@@ -44,12 +50,6 @@ export NVM_DIR="$HOME/.nvm"
 echo "Installing LTS Node.js"
 nvm install --lts
 nvm use --lts
-
-echo "Setting up zsh"
-cp ~/.zshrc ~/.zshrc.bkg
-cp zshrc ~/.zshrc
-
-sudo chsh -s $(which zsh)
 
 echo "Done!"
 echo "Logging out..."
