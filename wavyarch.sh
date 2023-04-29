@@ -30,6 +30,7 @@ sudo pacman -Syu --noconfirm
 
 echo "Installing deps"
 paru -S virtualbox-host-dkms --noconfirm
+# Run `sudo /sbin/vboxreload` if you are having issues with virtualbox not detecting kernel drivers
 
 echo "Installing applications"
 paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal zsh ffmpeg obs-studio discord virtualbox --noconfirm
