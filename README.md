@@ -1,5 +1,5 @@
 # 🌊 WavyArch
-Bash script to setup all my environment and applications after installation.
+Bash script I use after a fresh installation of Arch to setup my applications and environment.
 
 > **Note**:
 > This script has been configured to work with the `linux-zen` kernel and not the normal Linux kernel! Although you can use it without the Zen kernel, some applications like Virtualbox might not work.
