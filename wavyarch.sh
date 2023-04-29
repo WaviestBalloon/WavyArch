@@ -33,7 +33,7 @@ paru -S virtualbox-host-dkms --noconfirm
 # Run `sudo /sbin/vboxreload` if you are having issues with virtualbox not detecting kernel drivers
 
 echo "Installing applications"
-paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal zsh ffmpeg obs-studio discord virtualbox --noconfirm
+paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal zsh ffmpeg obs-studio discord virtualbox xorg-xkill --noconfirm
 
 echo "Installing Node Version Manager"
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
