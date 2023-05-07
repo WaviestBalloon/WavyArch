@@ -39,3 +39,5 @@ chmod +x ./wavyarch.sh
 - [xorg-kill](https://archlinux.org/packages/extra/x86_64/xorg-xkill/) - CLI tool to kill any process/window you click on
 - [bind](https://archlinux.org/packages/extra/x86_64/bind/) - Useful CLI tool for DNS debugging
 - [zsh](https://archlinux.org/packages/extra/x86_64/zsh/) - Shell customiser
+
+- Node.js Verion Manager - https://github.com/nvm-sh/nvm
