@@ -43,7 +43,7 @@ chmod +x ./install.sh
 echo "Copying zsh config file"
 cp ~/.zshrc ~/.zshrc.bkg
 cp zshrc ~/.zshrc
-
+echo "Changing shells"
 sudo chsh -s $(which zsh)
 
 echo "Installing Node Version Manager"
