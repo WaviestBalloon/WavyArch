@@ -7,6 +7,7 @@ Bash script I use after a fresh installation of Arch to setup my applications an
 > **Note**:
 > In some instances, Virtualbox will not work out of the box when ran.<br>
 > If you encounter issues with Virtualbox being unable to find kernel modules, make sure you have `virtualbox-host-dkms` (`virtualbox-host-modules-arch` for the normal Linux kernel) installed and run `sudo /sbin/vboxreload` to reload.
+> Please also refer to Issue https://github.com/WaviestBalloon/WavyArch/issues/1
 
 ### Usage
 
