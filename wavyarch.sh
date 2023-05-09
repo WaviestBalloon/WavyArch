@@ -2,6 +2,9 @@
 #https://github.com/WaviestBalloon/WavyArch
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
+echo "Checking for updates"
+git pull --force
+
 if [[ $EUID -eq 0 ]]; then
   echo "This script is restricted to run as a non-root user only. Do not run as root or sudo."
   exit 1
@@ -33,7 +36,7 @@ paru -S virtualbox-host-dkms --noconfirm
 # Run `sudo /sbin/vboxreload` if you are having issues with virtualbox not detecting kernel drivers
 
 echo "Installing applications"
-paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord virtualbox xorg-xkill bind zsh --noconfirm
+paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord virtualbox xorg-xkill bind zsh ark --noconfirm
 
 echo "Setting up zsh"
 echo "Downloading Oh-My-ZSH installer script"
