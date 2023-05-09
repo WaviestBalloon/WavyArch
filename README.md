@@ -17,7 +17,7 @@ chmod +x ./wavyarch.sh
 ./wavyarch.sh
 ```
 > **Warning**: 
-> Do not run this script as `sudo`! It will prompt you when it requires sudo permissions.
+> Do not run this script as **sudo**! It will prompt you when it requires sudo permissions.
 
 ### Software that will be installed
 
@@ -28,7 +28,7 @@ chmod +x ./wavyarch.sh
 - [filelight](https://archlinux.org/packages/extra/x86_64/filelight/) - Disk usage information (Essentially WinDirStat but for Linux)
 - [isoimagewriter](https://aur.archlinux.org/packages/isoimagewriter) - Writing ISO images to USB drives to make them bootable (Essentially a dumbed-down version of Rufus)
 - [visual-studio-code-bin](https://aur.archlinux.org/packages/visual-studio-code-bin) - Visual Studio Code binary for writing code (Also see [the open-source versions](https://wiki.archlinux.org/title/Visual_Studio_Code))
-- [firefox](https://archlinux.org/packages/extra/x86_64/firefox/) - Everyone's favourite fox, which is also a web browser
+- [firefox](https://archlinux.org/packages/extra/x86_64/firefox/) - Fox, which is also a web browser
 - [flameshot](https://archlinux.org/packages/community/x86_64/flameshot/) - Feature-rich screenshot tool with tons of editing features
 - [steam](https://archlinux.org/packages/multilib/x86_64/steam/) - Game distributor (Not Epic Games, thankfully)
 - [blackbox-terminal](https://aur.archlinux.org/packages/blackbox-terminal) - A very sleek and customisable terminal
