@@ -36,6 +36,11 @@ echo "Installing applications"
 paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord virtualbox xorg-xkill bind zsh --noconfirm
 
 echo "Setting up zsh"
+echo "HEY! ======================================================================================================"
+echo "Installing oh-my-zsh, but it doesn't have a headless option!"
+echo "You will need to exit zsh after it's finished installing, just simply run 'exit' when your terminal changes"
+echo "HEY! ======================================================================================================"
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 cp ~/.zshrc ~/.zshrc.bkg
 cp zshrc ~/.zshrc
 
