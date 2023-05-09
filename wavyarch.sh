@@ -36,11 +36,11 @@ echo "Installing applications"
 paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord virtualbox xorg-xkill bind zsh --noconfirm
 
 echo "Setting up zsh"
-echo "HEY! ======================================================================================================"
-echo "Installing oh-my-zsh, but it doesn't have a headless option!"
-echo "You will need to exit zsh after it's finished installing, just simply run 'exit' when your terminal changes"
-echo "HEY! ======================================================================================================"
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+echo "Downloading Oh-My-ZSH installer script"
+wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+chmod +x ./install.sh
+./install.sh --unattended
+echo "Copying zsh config file"
 cp ~/.zshrc ~/.zshrc.bkg
 cp zshrc ~/.zshrc
 
@@ -57,5 +57,5 @@ nvm install --lts
 nvm use --lts
 
 echo "Done!"
-echo "Logging out..."
-logout
+echo "NOTE ==========================================="
+echo "You should restart or logout of your system now"
