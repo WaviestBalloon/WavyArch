@@ -6,8 +6,10 @@ echo "Checking for updates"
 git pull --force
 
 if [[ $EUID -eq 0 ]]; then
-  echo "This script is restricted to run as a non-root user only. Do not run as root or sudo."
-  exit 1
+	echo "This script is restricted to run as a non-root user only. Do not run as root or sudo."
+	exit 1
+else
+	echo "Script running as user, you will be prompted when necessary for sudo permissions"
 fi
 
 echo "=== START ==="
@@ -39,7 +41,7 @@ echo "Refreshing Pacman to apply changes"
 sudo pacman -Syu --noconfirm
 
 echo "Installing applications"
-paru -S gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark --noconfirm
+paru -S gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark wine --noconfirm
 
 echo "Setting up zsh"
 echo "Downloading Oh-My-ZSH installer script"
