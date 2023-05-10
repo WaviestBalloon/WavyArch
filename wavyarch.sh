@@ -39,7 +39,7 @@ echo "Refreshing Pacman to apply changes"
 sudo pacman -Syu --noconfirm
 
 echo "Installing applications"
-paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark --noconfirm
+paru -S gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark --noconfirm
 
 echo "Setting up zsh"
 echo "Downloading Oh-My-ZSH installer script"
