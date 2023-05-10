@@ -11,9 +11,10 @@ if [[ $EUID -eq 0 ]]; then
 fi
 
 echo "Creating log file"
+rm wavyarchlogs.txt
 touch wavyarchlogs.txt
 LOG_FILE="$PWD/wavyarchlogs.txt"
-echo "Open a new terminal and run `tail -f ~/WavyArch/wavyarchlogs.txt` to get a live output of commands"
+echo "Open a new terminal and run 'tail -f $LOG_FILE' to get a live output of commands"
 
 read -p "! > Press enter to start"
 echo "=== START ==="
