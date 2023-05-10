@@ -35,4 +35,5 @@ chmod +x ./wavyarch.sh
 - [bind](https://archlinux.org/packages/extra/x86_64/bind/) - Useful CLI tool for DNS debugging
 - [zsh](https://archlinux.org/packages/extra/x86_64/zsh/) - Shell customiser
 - [ark](https://archlinux.org/packages/extra/x86_64/ark/) - UI archive tool to unzip and zip files
+- [wine](https://archlinux.org/packages/multilib/x86_64/wine/) - Compatibility layer for Windows applications and executable (Not a emulator)
 - Node.js Verion Manager - https://github.com/nvm-sh/nvm
