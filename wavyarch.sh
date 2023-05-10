@@ -32,11 +32,11 @@ sudo sed -i ''$rline's|#Include = /etc/pacman.d/mirrorlist|Include = /etc/pacman
 sudo pacman -Syu --noconfirm
 
 echo "Installing deps"
-paru -S virtualbox-host-dkms --noconfirm
+#paru -S virtualbox-host-dkms --noconfirm
 # Run `sudo /sbin/vboxreload` if you are having issues with virtualbox not detecting kernel drivers
 
 echo "Installing applications"
-paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord virtualbox xorg-xkill bind zsh ark --noconfirm
+paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark --noconfirm
 
 echo "Setting up zsh"
 echo "Downloading Oh-My-ZSH installer script"
