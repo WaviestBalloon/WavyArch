@@ -20,7 +20,7 @@ chmod +x ./wavyarch.sh
 - [gwenview](https://archlinux.org/packages/extra/x86_64/gwenview/) - Viewing pictures, gifs and other image formats
 - [krita](https://archlinux.org/packages/extra/x86_64/krita/) - Drawing art and editing image formats
 - [vlc](https://archlinux.org/packages/extra/x86_64/vlc/) - Playing videos and CD/DVDs
-- [gparted](https://archlinux.org/packages/extra/x86_64/gparted/) - Modifying and applying drive partition changes
+- [gnome-disk-utility](https://archlinux.org/packages/extra/x86_64/gnome-disk-utility/) - Modifying and applying drive partition changes
 - [filelight](https://archlinux.org/packages/extra/x86_64/filelight/) - Disk usage information (Essentially WinDirStat but for Linux)
 - [isoimagewriter](https://aur.archlinux.org/packages/isoimagewriter) - Writing ISO images to USB drives to make them bootable (Essentially a dumbed-down version of Rufus)
 - [visual-studio-code-bin](https://aur.archlinux.org/packages/visual-studio-code-bin) - Visual Studio Code binary for writing code (Also see [the open-source versions](https://wiki.archlinux.org/title/Visual_Studio_Code))
