@@ -2,13 +2,7 @@
 Bash script I use after a fresh installation of Arch to setup my applications and environment.
 
 > **Note**:
-> This script has been configured to work with the `linux-zen` kernel and not the normal Linux kernel! Although you can use it without the Zen kernel, some applications like Virtualbox might not work.
-
-> **Note**:
-> In some instances, Virtualbox will not work out of the box when ran.<br>
-> If you encounter issues with Virtualbox being unable to find kernel modules, make sure you have `virtualbox-host-dkms` (`virtualbox-host-modules-arch` for the normal Linux kernel) installed and run `sudo /sbin/vboxreload` to reload.
-> 
-> **Please also refer to Issue https://github.com/WaviestBalloon/WavyArch/issues/1**
+> This script has been configured to work with the `linux-zen` kernel and not the normal Linux kernel! Although you can use it without the Zen kernel, some applications might not work.
 
 ### Usage
 
@@ -37,7 +31,6 @@ chmod +x ./wavyarch.sh
 - [ffmpeg](https://archlinux.org/packages/extra/x86_64/ffmpeg/) - Useful CLI tool to modify videos and to convert media (E.g. `ffmpeg -i input.mov output.mp4`)
 - [obs-studio](https://archlinux.org/packages/community/x86_64/obs-studio/) - Popular, open-source screen recorder/boardcaster
 - [discord](https://archlinux.org/packages/community/x86_64/discord/) - Messaging platform for gaming communities, mostly wide-spread now
-- [virtualbox](https://archlinux.org/packages/community/x86_64/virtualbox/) - x86 virtualization (Virtual machines)
 - [xorg-kill](https://archlinux.org/packages/extra/x86_64/xorg-xkill/) - CLI tool to kill any process/window you click on
 - [bind](https://archlinux.org/packages/extra/x86_64/bind/) - Useful CLI tool for DNS debugging
 - [zsh](https://archlinux.org/packages/extra/x86_64/zsh/) - Shell customiser
