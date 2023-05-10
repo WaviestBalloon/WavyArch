@@ -29,11 +29,8 @@ rline=$(($mline + 1))
 sudo sed -i ''$mline's|#\[multilib\]|\[multilib\]|g' /etc/pacman.conf
 sudo sed -i ''$rline's|#Include = /etc/pacman.d/mirrorlist|Include = /etc/pacman.d/mirrorlist|g' /etc/pacman.conf
 
+echo "Refreshing Pacman"
 sudo pacman -Syu --noconfirm
-
-echo "Installing deps"
-#paru -S virtualbox-host-dkms --noconfirm
-# Run `sudo /sbin/vboxreload` if you are having issues with virtualbox not detecting kernel drivers
 
 echo "Installing applications"
 paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark --noconfirm
@@ -59,6 +56,13 @@ echo "Installing LTS Node.js"
 nvm install --lts
 nvm use --lts
 
-echo "Done!"
-echo "NOTE ==========================================="
-echo "You should restart or logout of your system now"
+echo "Done! All finished"
+echo "It is highly recommended for you to restart, would you like to reboot right now?"
+read -p "? > " CHOICE
+if [ "$CHOICE" = "y" ]; then
+	echo "Rebooting now"
+  reboot now
+else
+	echo "Alright, exiting now"
+	exit 0
+fi
