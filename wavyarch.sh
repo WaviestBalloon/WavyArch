@@ -10,27 +10,19 @@ if [[ $EUID -eq 0 ]]; then
   exit 1
 fi
 
-echo "Creating log file"
-rm wavyarchlogs.txt
-touch wavyarchlogs.txt
-LOG_FILE="$PWD/wavyarchlogs.txt"
-echo "Open a new terminal and run 'tail -f $LOG_FILE' to get a live output of commands"
-
-read -p "! > Press enter to start"
 echo "=== START ==="
 
 echo "Installing git, base-devel, rustup and linux-zen-headers"
-sudo pacman -S --needed git base-devel rustup linux-zen-headers --noconfirm >> LOG_FILE
-rustup default stable >> LOG_FILE
+sudo pacman -S --needed git base-devel rustup linux-zen-headers --noconfirm
 
 echo "Installing paru"
 
-if command paru &> /dev/null; then
+if ! [ -x "$(command -v git)" ]; then
 	cd ~
 	rm -rf paru
-	git clone https://aur.archlinux.org/paru.git >> LOG_FILE
+	git clone https://aur.archlinux.org/paru.git
 	cd paru
-	makepkg -si >> LOG_FILE
+	makepkg -si
 	cd SCRIPT_DIR
 else
 	pnt "[\033[36m>\033[39m] Paru seems to be installed, skipping!"
@@ -44,16 +36,16 @@ sudo sed -i ''$mline's|#\[multilib\]|\[multilib\]|g' /etc/pacman.conf
 sudo sed -i ''$rline's|#Include = /etc/pacman.d/mirrorlist|Include = /etc/pacman.d/mirrorlist|g' /etc/pacman.conf
 
 echo "Refreshing Pacman to apply changes"
-sudo pacman -Syu --noconfirm >> LOG_FILE
+sudo pacman -Syu --noconfirm
 
 echo "Installing applications"
-paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark --noconfirm >> LOG_FILE
+paru -S gwenview krita gparted vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark --noconfirm
 
 echo "Setting up zsh"
 echo "Downloading Oh-My-ZSH installer script"
-wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh >> LOG_FILE
+wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
 chmod +x ./install.sh
-./install.sh --unattended >> LOG_FILE
+./install.sh --unattended
 echo "Copying zsh config file"
 cp ~/.zshrc ~/.zshrc.bkg
 cp zshrc ~/.zshrc
@@ -66,7 +58,7 @@ rm install.sh
 echo "Installing Node Version Manager"
 wget https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh
 chmod +x ./install.sh
-./install.sh >> LOG_FILE
+./install.sh
 echo "Exporting NVM into current shell session"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
