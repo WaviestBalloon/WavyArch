@@ -80,6 +80,9 @@ nvm install --lts
 echo "Setting LTS as default Node.js version"
 nvm use --lts
 
+echo "Installing extra fonts"
+paru -S ttf-twemoji-color
+
 echo "Done! All finished"
 echo "It is highly recommended for you to restart, would you like to reboot right now?"
 read -p "? > " CHOICE
