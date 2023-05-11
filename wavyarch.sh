@@ -41,10 +41,10 @@ echo "Refreshing Pacman to apply changes"
 sudo pacman -Syu --noconfirm
 
 echo "Installing deps"
-paru -S libvirt
+paru -S libvirt dnsmasq iptables-nft
 
 echo "Installing applications"
-paru -S gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark wine virt-manager --noconfirm
+paru -S gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark wine virt-manager qemu-desktop --noconfirm
 
 echo "Enabling libvertd on startup"
 sudo systemctl enable libvertd
