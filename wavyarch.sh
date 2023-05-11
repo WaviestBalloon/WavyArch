@@ -40,8 +40,14 @@ sudo sed -i ''$rline's|#Include = /etc/pacman.d/mirrorlist|Include = /etc/pacman
 echo "Refreshing Pacman to apply changes"
 sudo pacman -Syu --noconfirm
 
+echo "Installing deps"
+paru -S libvirt
+
 echo "Installing applications"
-paru -S gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark wine --noconfirm
+paru -S gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark wine virt-manager --noconfirm
+
+echo "Enabling libvertd on startup"
+sudo systemctl enable libvertd
 
 echo "Setting up zsh"
 echo "Downloading Oh-My-ZSH installer script"
