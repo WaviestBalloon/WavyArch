@@ -36,4 +36,6 @@ chmod +x ./wavyarch.sh
 - [zsh](https://archlinux.org/packages/extra/x86_64/zsh/) - Shell customiser
 - [ark](https://archlinux.org/packages/extra/x86_64/ark/) - UI archive tool to unzip and zip files
 - [wine](https://archlinux.org/packages/multilib/x86_64/wine/) - Compatibility layer for Windows applications and executable (Not a emulator)
+- [qemu-desktop](https://archlinux.org/packages/extra/x86_64/qemu-desktop/) - Enables you to run virtual machines with little overhead
+- [virt-manager](https://archlinux.org/packages/community/any/virt-manager/) - Virtual machine manager UI for QEMU
 - Node.js Verion Manager - https://github.com/nvm-sh/nvm
