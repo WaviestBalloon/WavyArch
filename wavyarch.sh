@@ -41,7 +41,7 @@ echo "Refreshing Pacman to apply changes"
 sudo pacman -Syu --noconfirm
 
 echo "Installing deps"
-paru -S libvirt dnsmasq iptables-nft
+paru -S libvirt dnsmasq iptables
 
 echo "Installing applications"
 paru -S gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark wine virt-manager qemu-desktop --noconfirm
