@@ -42,3 +42,4 @@ chmod +x ./wavyarch.sh
 - **+** *qemu tools/dependencies*
 - [unrar](https://archlinux.org/packages/extra/x86_64/unrar/) - Allows you to view and unextract `.rar` archives, even via Ark
 - Node.js Verion Manager - https://github.com/nvm-sh/nvm
+- Oh My ZSH - https://ohmyz.sh/
