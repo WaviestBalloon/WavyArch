@@ -12,6 +12,19 @@ else
 	echo "Script running as user, you will be prompted when necessary for sudo permissions"
 fi
 
+ALLOW_VERT_INSTALLATION=false
+echo "=== IMPORTANT ==="
+echo "Would you like to skip installing QEMU and virt-manager? (Application for using virtual machines)"
+echo "Some people who have used this script have encountered issues, mainly graphical issues after package installation, although I couldn't reproduce it - It is worth considering!"
+echo "[y/n]"
+read -p "? > " CHOICE
+if [ "$CHOICE" = "y" ]; then
+	echo "Installation of QEMU and virt-manager has been allowed"
+	ALLOW_VERT_INSTALLATION=true
+else
+	echo "Installation of QEMU and virt-manager has been disallowed - They will be skipped"
+fi
+
 echo "=== START ==="
 
 echo "Installing git, base-devel, rustup and linux-zen-headers"
@@ -40,13 +53,19 @@ sudo sed -i ''$rline's|#Include = /etc/pacman.d/mirrorlist|Include = /etc/pacman
 echo "Telling Pacman to update packages to apply multilib changes"
 sudo pacman -Syu --noconfirm
 
-echo "Installing deps - QEMU"
-paru -S libvirt dnsmasq iptables
+if [ "$ALLOW_VERT_INSTALLATION" = true ]; then
+	echo "Installing deps - QEMU"
+	paru -S libvirt dnsmasq iptables
+fi
 echo "Installing deps - Wine"
 paru -S gnutls lib32-gnutls libpulse lib32-libpulse
 
 echo "Installing applications"
-paru -S gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark wine virt-manager qemu-desktop spotify unrar --noconfirm
+paru -S gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark wine spotify unrar --noconfirm
+if [ "$ALLOW_VERT_INSTALLATION" = true ]; then
+	echo "Installing applications - QEMU"
+	paru -S virt-manager qemu-desktop
+fi
 
 echo "Enabling libvertd on startup"
 sudo systemctl enable libvertd
@@ -87,6 +106,7 @@ paru -S ttf-twemoji-color
 
 echo "Done! All finished"
 echo "It is highly recommended for you to restart, would you like to reboot right now?"
+echo "[y/n]"
 read -p "? > " CHOICE
 if [ "$CHOICE" = "y" ]; then
 	echo "Rebooting now"
