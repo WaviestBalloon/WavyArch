@@ -37,11 +37,13 @@ rline=$(($mline + 1))
 sudo sed -i ''$mline's|#\[multilib\]|\[multilib\]|g' /etc/pacman.conf
 sudo sed -i ''$rline's|#Include = /etc/pacman.d/mirrorlist|Include = /etc/pacman.d/mirrorlist|g' /etc/pacman.conf
 
-echo "Refreshing Pacman to apply changes"
+echo "Telling Pacman to update packages to apply multilib changes"
 sudo pacman -Syu --noconfirm
 
-echo "Installing deps"
+echo "Installing deps - QEMU"
 paru -S libvirt dnsmasq iptables
+echo "Installing deps - Wine"
+paru -S gnutls lib32-gnutls libpulse lib32-libpulse
 
 echo "Installing applications"
 paru -S gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark wine virt-manager qemu-desktop spotify unrar --noconfirm
