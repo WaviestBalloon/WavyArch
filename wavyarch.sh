@@ -56,6 +56,8 @@ sudo pacman -Syu --noconfirm
 if [ "$ALLOW_VERT_INSTALLATION" = true ]; then
 	echo "Installing deps - QEMU"
 	paru -S libvirt dnsmasq iptables
+	sudo systemctl enable --now libvirtd.service
+	sudo virsh net-autostart default
 fi
 echo "Installing deps - Wine"
 paru -S gnutls lib32-gnutls libpulse lib32-libpulse
