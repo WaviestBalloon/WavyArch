@@ -56,7 +56,9 @@ sudo pacman -Syu --noconfirm
 if [ "$ALLOW_VERT_INSTALLATION" = true ]; then
 	echo "Installing deps - QEMU"
 	paru -S libvirt dnsmasq iptables
+	echo "Enabling and starting libvertd on startup"
 	sudo systemctl enable --now libvirtd.service
+	echo "Enabling and starting virsh networking on startup"
 	sudo virsh net-autostart default
 	sudo virsh net-start default
 fi
@@ -69,9 +71,6 @@ if [ "$ALLOW_VERT_INSTALLATION" = true ]; then
 	echo "Installing applications - QEMU"
 	paru -S virt-manager qemu-desktop
 fi
-
-echo "Enabling libvertd on startup"
-sudo systemctl enable libvertd
 
 echo "Setting up zsh"
 echo "Downloading Oh-My-ZSH installer script"
