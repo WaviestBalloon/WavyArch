@@ -59,6 +59,7 @@ if [ "$ALLOW_VERT_INSTALLATION" = true ]; then
 	echo "Enabling and starting libvertd on startup"
 	sudo systemctl enable --now libvirtd.service
 	echo "Enabling and starting virsh networking on startup"
+	# If anything at this stage hangs, try `systemctl restart libvirtd`
 	sudo virsh net-autostart default
 	sudo virsh net-start default
 fi
