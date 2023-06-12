@@ -30,17 +30,21 @@ echo "=== START ==="
 echo "Installing git, base-devel, rustup and linux-zen-headers"
 sudo pacman -S --needed git base-devel rustup linux-zen-headers --noconfirm
 
-echo "Installing paru"
-
+echo "Checking paru"
 if ! [ -x "$(command -v git)" ]; then
-	cd ~
-	rm -rf paru
-	git clone https://aur.archlinux.org/paru.git
-	cd paru
-	makepkg -si
-	cd SCRIPT_DIR
+	if ! [ -x "$(command -v paru)" ]; then
+		pnt "Installing paru"
+		cd ~
+		rm -rf paru
+		git clone https://aur.archlinux.org/paru.git
+		cd paru
+		makepkg -si
+		cd SCRIPT_DIR
+	else
+		pnt "[\033[36m>\033[39m] Paru seems to be installed, skipping!"
+	fi
 else
-	pnt "[\033[36m>\033[39m] Paru seems to be installed, skipping!"
+	pnt "Git is not installed, cannot clone Paru repo"
 fi
 
 echo "Allowing and enabling multilib for pacman"
