@@ -3,7 +3,7 @@
 Bash script I use after a fresh installation of Arch to setup my applications and environment.
 
 > **Note**:
-> This script has been configured to work with the `linux-zen` kernel and not the normal Linux kernel! Although you can use it without the Zen kernel, some applications might not work.
+> This script has been configured to work with the `linux-zen` kernel. You may encounter issues 
 
 ### Usage
 
@@ -42,5 +42,6 @@ chmod +x ./wavyarch.sh
 - [virt-manager](https://archlinux.org/packages/community/any/virt-manager/) - Virtual machine manager UI for QEMU
 - **+** *qemu tools/dependencies*
 - [unrar](https://archlinux.org/packages/extra/x86_64/unrar/) - Allows you to view and unextract `.rar` archives, even via Ark
+- [kdenlive](https://archlinux.org/packages/extra/x86_64/kdenlive/) - A video editor with hardware acceleration by KDE
 - Node.js Verion Manager - https://github.com/nvm-sh/nvm
 - Oh My ZSH - https://ohmyz.sh/
