@@ -45,3 +45,4 @@ chmod +x ./wavyarch.sh
 - [kdenlive](https://archlinux.org/packages/extra/x86_64/kdenlive/) - A video editor with hardware acceleration by KDE
 - Node.js Verion Manager - https://github.com/nvm-sh/nvm
 - Oh My ZSH - https://ohmyz.sh/
+- pnpm - https://pnpm.io/ - Basically, better NPM
