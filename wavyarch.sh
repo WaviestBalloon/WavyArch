@@ -71,7 +71,7 @@ echo "Installing deps - Wine"
 paru -S gnutls lib32-gnutls libpulse lib32-libpulse
 
 echo "Installing applications"
-paru -S gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark wine spotify unrar kdenlive --noconfirm
+paru -S gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark wine spotify unrar kdenlive okteta --noconfirm
 if [ "$ALLOW_VERT_INSTALLATION" = true ]; then
 	echo "Installing applications - QEMU"
 	paru -S virt-manager qemu-desktop
