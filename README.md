@@ -43,6 +43,7 @@ chmod +x ./wavyarch.sh
 - **+** *qemu tools/dependencies*
 - [unrar](https://archlinux.org/packages/extra/x86_64/unrar/) - Allows you to view and unextract `.rar` archives, even via Ark
 - [kdenlive](https://archlinux.org/packages/extra/x86_64/kdenlive/) - A video editor with hardware acceleration by KDE
+- [okteta](https://archlinux.org/packages/extra/x86_64/okteta/) - A Hex editor by KDE
 - Node.js Verion Manager - https://github.com/nvm-sh/nvm
 - Oh My ZSH - https://ohmyz.sh/
 - pnpm - https://pnpm.io/ - Basically, better NPM
