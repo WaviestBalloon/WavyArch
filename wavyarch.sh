@@ -15,7 +15,7 @@ fi
 ALLOW_VERT_INSTALLATION=false
 echo "=== IMPORTANT ==="
 echo "Would you like to skip installing QEMU and virt-manager? (Application for using virtual machines)"
-echo "Some people who have used this script have encountered issues, mainly graphical issues after package installation, although I couldn't reproduce it - It is worth considering!"
+echo "Some people who have used this script have encountered issues, mainly graphical issues after package installation"
 echo "[y/n]"
 read -p "? > " CHOICE
 if [ "$CHOICE" = "y" ]; then
@@ -63,7 +63,7 @@ if [ "$ALLOW_VERT_INSTALLATION" = true ]; then
 	echo "Enabling and starting libvertd on startup"
 	sudo systemctl enable --now libvirtd.service
 	echo "Enabling and starting virsh networking on startup"
-	# If anything at this stage hangs, try `systemctl restart libvirtd`
+	echo "If anything at this stage hangs, try `systemctl restart libvirtd`"
 	sudo virsh net-autostart default
 	sudo virsh net-start default
 fi
