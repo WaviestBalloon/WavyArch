@@ -82,6 +82,11 @@ sudo pacman -Syu --noconfirm
 if [ "$ALLOW_VERT_INSTALLATION" = true ]; then
 	echo "Installing deps - QEMU"
 	paru -S libvirt dnsmasq iptables
+ 	if [ "$INSTALL_PARU_OVER_YAY" = true ]; then
+		paru -S libvirt dnsmasq iptables
+	else
+		yay libvirt dnsmasq iptables
+	fi
 	echo "Enabling and starting libvertd on startup"
 	sudo systemctl enable --now libvirtd.service
 	echo "Enabling and starting virsh networking on startup"
@@ -93,21 +98,21 @@ echo "Installing deps - Wine"
 if [ "$INSTALL_PARU_OVER_YAY" = true ]; then
 	paru -S gnutls lib32-gnutls libpulse lib32-libpulse
 else
-	yay gnutls lib32-gnutls libpulse lib32-libpulse --answerdiff=None
+	yay gnutls lib32-gnutls libpulse lib32-libpulse
 fi
 
 echo "Installing applications"
 if [ "$INSTALL_PARU_OVER_YAY" = true ]; then
 	paru -S gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark wine spotify unrar kdenlive okteta --noconfirm
 else
-	yay gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark wine spotify unrar kdenlive okteta --answerdiff=None
+	yay gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark wine spotify unrar kdenlive okteta
 fi
 if [ "$ALLOW_VERT_INSTALLATION" = true ]; then
 	echo "Installing applications - QEMU"
 	 if [ "$INSTALL_PARU_OVER_YAY" = true ]; then
 		paru -S virt-manager qemu-desktop
   	else
-   		yay virt-manager qemu-desktop --answerdiff=None
+   		yay virt-manager qemu-desktop
    	fi
 fi
 
@@ -144,13 +149,6 @@ echo "Installing LTS Node.js"
 nvm install --lts
 echo "Setting LTS as default Node.js version"
 nvm use --lts
-
-echo "Installing extra fonts"
-if [ "$INSTALL_PARU_OVER_YAY" = true ]; then
-	paru -S ttf-twemoji-color
-else
-   	yay ttf-twemoji-color --answerdiff=None
-fi
 
 echo "Done! All finished"
 echo "It is highly recommended for you to restart, would you like to reboot right now?"
