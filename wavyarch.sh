@@ -62,7 +62,7 @@ if [ "$INSTALL_PARU_OVER_YAY" = true ]; then
 			sudo pacman -S --needed git base-devel
    			git clone https://aur.archlinux.org/yay.git
       			cd yay
-	 		sudo makepkg -si
+	 		makepkg -si
 			cd SCRIPT_DIR
 		else
 			echo "[\033[36m>\033[39m] Yay seems to be installed, skipping!"
