@@ -44,8 +44,7 @@ echo "Installing git, base-devel, rustup and linux-zen-headers"
 sudo pacman -S --needed git base-devel rustup linux-zen-headers --noconfirm
 
 echo "Checking paru/yay"
-if ! [ -x "$(command -v git)" ]; then
-	if [ "$INSTALL_PARU_OVER_YAY" = true ]; then
+if [ "$INSTALL_PARU_OVER_YAY" = true ]; then
 		 if ! [ -x "$(command -v paru)" ]; then
 			echo "Installing paru"
 			cd ~
@@ -65,9 +64,6 @@ if ! [ -x "$(command -v git)" ]; then
 			echo "[\033[36m>\033[39m] Yay seems to be installed, skipping!"
 		fi
  	fi
-else
-	echo "Git is not installed, cannot clone Paru/Yay repo"
-fi
 
 echo "Allowing and enabling multilib for pacman"
 sudo cp /etc/pacman.conf /etc/pacman.conf.bkg
