@@ -13,6 +13,7 @@ else
 fi
 
 ALLOW_VERT_INSTALLATION=false
+INSTALL_PARU_OVER_YAY=true
 echo "=== IMPORTANT ==="
 echo "Would you like to skip installing QEMU and virt-manager? (Application for using virtual machines)"
 echo "Some people who have used this script have encountered issues, mainly graphical issues after package installation"
@@ -25,6 +26,18 @@ else
 	echo "Installation of QEMU and virt-manager has been disallowed - They will be skipped"
 fi
 
+echo " "
+echo "=== IMPORTANT ==="
+echo "Would you like to install and use Paru instead of Yay as your AUR helper?"
+echo "[y/n]"
+read -p "? > " CHOICE
+if [ "$CHOICE" = "y" ]; then
+	echo "Installation of Paru has been allowed"
+	INSTALL_PARU_OVER_YAY=true
+else
+	echo "Installation of Paru has been disallowed - Yay will be installed and used instead"
+fi
+
 echo "=== START ==="
 
 echo "Installing git, base-devel, rustup and linux-zen-headers"
@@ -32,19 +45,28 @@ sudo pacman -S --needed git base-devel rustup linux-zen-headers --noconfirm
 
 echo "Checking paru"
 if ! [ -x "$(command -v git)" ]; then
-	if ! [ -x "$(command -v paru)" ]; then
-		pnt "Installing paru"
-		cd ~
-		rm -rf paru
-		git clone https://aur.archlinux.org/paru.git
-		cd paru
-		makepkg -si
-		cd SCRIPT_DIR
-	else
-		pnt "[\033[36m>\033[39m] Paru seems to be installed, skipping!"
-	fi
+	if [ "$INSTALL_PARU_OVER_YAY" = true ]; then
+		 if ! [ -x "$(command -v paru)" ]; then
+			pnt "Installing paru"
+			cd ~
+			rm -rf paru
+			git clone https://aur.archlinux.org/paru.git
+			cd paru
+			makepkg -si
+			cd SCRIPT_DIR
+		else
+			pnt "[\033[36m>\033[39m] Paru seems to be installed, skipping!"
+		fi
+  	else
+  		 if ! [ -x "$(command -v yay)" ]; then
+			pnt "Installing yay"
+			pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+		else
+			pnt "[\033[36m>\033[39m] Yay seems to be installed, skipping!"
+		fi
+ 	fi
 else
-	pnt "Git is not installed, cannot clone Paru repo"
+	pnt "Git is not installed, cannot clone Paru/Yay repo"
 fi
 
 echo "Allowing and enabling multilib for pacman"
@@ -68,13 +90,25 @@ if [ "$ALLOW_VERT_INSTALLATION" = true ]; then
 	sudo virsh net-start default
 fi
 echo "Installing deps - Wine"
-paru -S gnutls lib32-gnutls libpulse lib32-libpulse
+if [ "$INSTALL_PARU_OVER_YAY" = true ]; then
+	paru -S gnutls lib32-gnutls libpulse lib32-libpulse
+else
+	yay gnutls lib32-gnutls libpulse lib32-libpulse --answerdiff=None
+fi
 
 echo "Installing applications"
-paru -S gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark wine spotify unrar kdenlive okteta --noconfirm
+if [ "$INSTALL_PARU_OVER_YAY" = true ]; then
+	paru -S gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark wine spotify unrar kdenlive okteta --noconfirm
+else
+	yay gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark wine spotify unrar kdenlive okteta --answerdiff=None
+fi
 if [ "$ALLOW_VERT_INSTALLATION" = true ]; then
 	echo "Installing applications - QEMU"
-	paru -S virt-manager qemu-desktop
+	 if [ "$INSTALL_PARU_OVER_YAY" = true ]; then
+		paru -S virt-manager qemu-desktop
+  	else
+   		yay virt-manager qemu-desktop --answerdiff=None
+   	fi
 fi
 
 echo "Setting up zsh"
