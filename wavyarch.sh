@@ -142,7 +142,11 @@ echo "Setting LTS as default Node.js version"
 nvm use --lts
 
 echo "Installing extra fonts"
-paru -S ttf-twemoji-color
+if [ "$INSTALL_PARU_OVER_YAY" = true ]; then
+	paru -S ttf-twemoji-color
+else
+   	yay ttf-twemoji-color --answerdiff=None
+fi
 
 echo "Done! All finished"
 echo "It is highly recommended for you to restart, would you like to reboot right now?"
