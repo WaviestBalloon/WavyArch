@@ -13,7 +13,7 @@ else
 fi
 
 ALLOW_VERT_INSTALLATION=false
-INSTALL_PARU_OVER_YAY=true
+INSTALL_PARU_OVER_YAY=false
 echo "=== IMPORTANT ==="
 echo "Would you like to skip installing QEMU and virt-manager? (Application for using virtual machines)"
 echo "Some people who have used this script have encountered issues, mainly graphical issues after package installation"
