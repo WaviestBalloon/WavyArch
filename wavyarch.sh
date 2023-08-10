@@ -1,6 +1,15 @@
 #!/bin/bash
 #https://github.com/WaviestBalloon/WavyArch
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+ALLOW_VERT_INSTALLATION=false
+INSTALL_PARU_OVER_YAY=false
+function installPkg() {
+	if [ "$INSTALL_PARU_OVER_YAY" = true ]; then
+		paru -S "$@" --noconfirm
+  	else
+   		yay -S "$@"
+   	fi
+}
 
 echo "Checking for updates"
 git pull --force
@@ -12,8 +21,7 @@ else
 	echo "Script running as user, you will be prompted when necessary for sudo permissions"
 fi
 
-ALLOW_VERT_INSTALLATION=false
-INSTALL_PARU_OVER_YAY=false
+
 echo "=== IMPORTANT ==="
 echo "Would you like to skip installing QEMU and virt-manager? (Application for using virtual machines)"
 echo "Some people who have used this script have encountered issues, mainly graphical issues after package installation"
@@ -45,29 +53,29 @@ sudo pacman -S --needed git base-devel rustup linux-zen-headers --noconfirm
 
 echo "Checking paru/yay"
 if [ "$INSTALL_PARU_OVER_YAY" = true ]; then
-		 if ! [ -x "$(command -v paru)" ]; then
-			echo "Installing paru"
-			cd ~
-			rm -rf paru
-			git clone https://aur.archlinux.org/paru.git
-			cd paru
-			makepkg -si
-			cd SCRIPT_DIR
-		else
-			pnt "[\033[36m>\033[39m] Paru seems to be installed, skipping!"
-		fi
-  	else
-  		 if ! [ -x "$(command -v yay)" ]; then
-			echo "Installing yay"
-			sudo pacman -S --needed git base-devel
-   			git clone https://aur.archlinux.org/yay.git
-      			cd yay
-	 		makepkg -si
-			cd SCRIPT_DIR
-		else
-			echo "[\033[36m>\033[39m] Yay seems to be installed, skipping!"
-		fi
- 	fi
+	if ! [ -x "$(command -v paru)" ]; then
+		echo "Installing paru"
+		cd ~
+		rm -rf paru
+		git clone https://aur.archlinux.org/paru.git
+		cd paru
+		makepkg -si
+		cd SCRIPT_DIR
+	else
+		echo "[\033[36m>\033[39m] Paru seems to be installed, skipping!"
+	fi
+  else
+  	if ! [ -x "$(command -v yay)" ]; then
+		echo "Installing yay"
+		sudo pacman -S --needed git base-devel
+   		git clone https://aur.archlinux.org/yay.git
+      		cd yay
+	 	makepkg -si
+		cd SCRIPT_DIR
+	else
+		echo "[\033[36m>\033[39m] Yay seems to be installed, skipping!"
+	fi
+fi
 
 echo "Allowing and enabling multilib for pacman"
 sudo cp /etc/pacman.conf /etc/pacman.conf.bkg
@@ -81,12 +89,7 @@ sudo pacman -Syu --noconfirm
 
 if [ "$ALLOW_VERT_INSTALLATION" = true ]; then
 	echo "Installing deps - QEMU"
-	paru -S libvirt dnsmasq iptables
- 	if [ "$INSTALL_PARU_OVER_YAY" = true ]; then
-		paru -S libvirt dnsmasq iptables
-	else
-		yay libvirt dnsmasq iptables
-	fi
+	installPkg libvirt dnsmasq iptables
 	echo "Enabling and starting libvertd on startup"
 	sudo systemctl enable --now libvirtd.service
 	echo "Enabling and starting virsh networking on startup"
@@ -95,25 +98,14 @@ if [ "$ALLOW_VERT_INSTALLATION" = true ]; then
 	sudo virsh net-start default
 fi
 echo "Installing deps - Wine"
-if [ "$INSTALL_PARU_OVER_YAY" = true ]; then
-	paru -S gnutls lib32-gnutls libpulse lib32-libpulse
-else
-	yay gnutls lib32-gnutls libpulse lib32-libpulse
-fi
+installPkg gnutls lib32-gnutls libpulse lib32-libpulse
 
 echo "Installing applications"
-if [ "$INSTALL_PARU_OVER_YAY" = true ]; then
-	paru -S gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark wine spotify unrar kdenlive okteta --noconfirm
-else
-	yay gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark wine spotify unrar kdenlive okteta
-fi
+installPkg gwenview krita gnome-disk-utility vlc filelight isoimagewriter visual-studio-code-bin firefox flameshot steam blackbox-terminal ffmpeg obs-studio discord xorg-xkill bind zsh ark wine spotify unrar kdenlive okteta
+
 if [ "$ALLOW_VERT_INSTALLATION" = true ]; then
 	echo "Installing applications - QEMU"
-	 if [ "$INSTALL_PARU_OVER_YAY" = true ]; then
-		paru -S virt-manager qemu-desktop
-  	else
-   		yay virt-manager qemu-desktop
-   	fi
+	installPkg virt-manager qemu-desktop
 fi
 
 echo "Setting up zsh"
