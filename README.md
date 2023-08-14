@@ -13,7 +13,7 @@ cd WavyArch
 chmod +x ./wavyarch.sh
 ./wavyarch.sh
 ```
-> **Warning**: 
+> [!WARNING]
 > Do not run this script as **sudo**! It will prompt you when it requires sudo permissions.
 
 ### Software that will be installed
