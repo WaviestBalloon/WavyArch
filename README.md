@@ -2,8 +2,8 @@
 ### I have just realised how awful my bash scripting is, I will probably refactor in the future
 Bash script I use after a fresh installation of Arch to setup my environment and install applications.
 
-> **Note**:
-> This script has been configured to work with the `linux-zen` kernel. You may encounter issues 
+> [!NOTE]
+> This script has been configured to work with the `linux-zen` kernel. You may encounter issues
 
 ### Usage
 
