@@ -59,6 +59,8 @@ if [ "$INSTALL_PARU_OVER_YAY" = true ]; then
 		rm -rf paru
 		git clone https://aur.archlinux.org/paru.git
 		cd paru
+  		echo "Installing Rust release"
+    		rustup default stable
 		makepkg -si
 		cd SCRIPT_DIR
 	else
